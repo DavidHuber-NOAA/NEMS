@@ -14,6 +14,12 @@ else if ( { test -d /scratch1 -a ! -d /scratch } ) then
         source /apps/lmod/lmod/init/$__ms_shell
     endif
     module purge
+else if ( { test -d /data/prod -a } ) then
+    # We are on SSEC's S4
+    if ( ! { module help >& /dev/null } ) then
+        source /usr/share/lmod/lmod/init/$__ms_shell
+    endif
+    module purge
 else if ( { test -d /work/noaa } ) then
     # We are on Orion
     if ( ! { module help >& /dev/null } ) then
